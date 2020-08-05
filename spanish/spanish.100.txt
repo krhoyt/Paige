@@ -1,0 +1,101 @@
+el	(def. art.) the
+la	(def. art.) the
+de	(prep.) of, from
+que	(conj.) that, which
+y	(conj.) and
+a	(prep.) to, at
+en	(prep.) in, on
+un	(indef. art.) a, an
+ser	(verb) to be
+se	(pron.) -self, oneself [reflexive marker]
+no	(adv.) no
+haber	(verb) to have
+por	(prep.) by, for, through
+con	(prep.) with 
+su	(adj.) his, her, their, your (fam.)
+para	(prep.) for, to, in order to
+como	(conj.) like, as
+estar	(verb) to be
+tener	(verb) to have
+le	(pron.) [3rd pers. indirect object pronoun]
+lo	(art.) the (+ noun)
+lo	(pron.) [3rd pers. masc. direct object pronoun]
+todo	(adj.) all, every
+pero	(conj.) but, yet, except 
+más	(adj.) more
+hacer	(verb.) to do, make
+o	(conj.) or
+poder	(verb) to be able to, can 
+decir	(verb) to tell, say
+este	(adj.) this (m); esta (f)
+ir	(verb) to go 
+otro	(adj.) other, another
+ese	(adj.) that (m); esa (f)
+la	(pron.) [3rd pers. fem. direct object pronoun]
+si	(conj.) if, whether
+me	(pron.) me 
+ya	(adv.) already, still
+ver	(verb) to see
+porque	(conj.) because
+dar	(verb) to give
+cuando	(conj.) when 
+él	(pron.) he
+muy	(adv.) very, really
+sin	(prep.) without
+vez	(noun, f.) time, occurrence 
+mucho	(adj.) much, many, a lot
+saber	(verb) to know
+qué	(pron.) what?, which?, how (+ adj.)
+sobre	(prep.) on top of, over, about
+mi	(adj.) my
+alguno	(adj.) some; (pron.) someone
+mismo	(adj.) same
+yo	(pron.) I
+también	(adv.) also
+hasta	(prep.) until, up to; (adv.) even
+año (noun, m.) year
+dos	(num.) two
+querer	(verb) to want, love
+entre	(prep.) between
+así	(adv.) like that
+primero	(adj.) first
+desde	(prep.) from, since
+grande	(adj.) large, great, big
+eso	(pron., n.) that
+ni	(conj.) not even, neither, nor 
+nos	(pron.) us
+llegar	(verb) to arrive
+pasar	(verb) to pass, spend (time)
+tiempo	(noun, m.) time, weather
+ella	(pron.) she; ellas them
+sí	(adv.) yes
+día	(noun, m.) day
+uno	(num.) one
+bien	(adv.) well
+poco	(adj.) little few; (adv.) a little bit
+deber	(verb) should, ought to; to owe
+entonces	(adv.) so, then
+poner	(verb) to put (on); get (+ adj.)
+cosa	(noun, f.) thing
+tanto	(adj.) much
+hombre	(noun, m.) man, mankind, husband
+parecer	(verb) to seem, look like
+nuestro	(adj.) our
+tan	(adv.) such, a, too, so
+donde	(conj.) where 
+ahora	(adv.) now
+parte	(noun, f.) part, portion
+después	(adv.) after
+vida	(noun, f.) life
+quedar	(verb) to remain, stay
+siempre	(adv.) always
+creer	(verb) to believe
+hablar	(verb) to speak, talk
+llevar	(verb) to take, carry
+dejar	(verb) to let, leave 
+nada	(pron.) nothing
+cada	(adj.) each, every
+seguir	(verb) to follow
+menos	(adj.) less, fewer
+nuevo	(adj.) new
+encontrar	(verb) to find

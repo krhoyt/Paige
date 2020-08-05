@@ -1,0 +1,191 @@
+ser,to be
+yo soy,I am
+tú eres,you are
+él es,he is
+ella es,she is
+usted es,you are
+nosotros somos,we are
+vosotros sois,you are all
+ellos son,they are
+ellas son,they are
+ustedes son,they are
+estar,to be
+yo estoy,i am
+tú estás,you are
+él está,he is
+ella está,she is
+usted está,you are
+nosotros estamos,we are
+vosotros estáis,you are all
+ellos están,they are
+ellas están,they are
+ustedes están,they are
+tener,to have
+yo tengo,I have
+tú tienes,you have
+él tiene,he has
+ella tiene,she has
+usted tiene,you have
+nosotros tenemos,we have
+vosotros tenéis,you have
+ellos tienen,they have
+ellas tienen,they have
+ustedes tiene,they have
+gustar,to like
+yo gusto,I like
+tú gustas,you like
+él gusta,he likes
+ella gusta,she likes
+usted gusta,you like
+nosotros gustamos,we like
+vosotros gustáis,you like
+ellos gustan,they like
+ellas gustan,they like
+ustedes gustan,they like
+buenos dias,good morning
+buenos,good
+dia,day
+buenas tardes,good afternoon
+tardes,afternon
+buenas noches,good evening
+noches,evening
+noches,night
+hola,hello
+adios,goodbye
+hasta luego,see you later
+hasta manana,see you tomorrow
+manana,morning
+como estas,how are you
+como esta usted,how are you
+que tal,how is it going
+que,how
+bien,fine
+mal,bad
+mas o menos,so so
+mas,more
+menos,less
+muy bien,very well
+muy,very
+regular,okay
+y tu,and you
+y,and
+tu,you
+y usted,and you
+usted,you
+que pasa,what is up
+que,what
+como se llama,what is your name
+como,what
+me llamo,my name is
+me,me
+encantado,delighted
+encantada,delighted
+iqualmente,likewise
+mucho gusto,nice to meet you
+mucho,much
+quien es,who is
+quien,who
+es,is
+que dia es hoy,what day is today
+hoy,today
+la semana,week
+cual,which
+telefono,telephone
+numero,number
+mi,mine
+la clase,class
+el maestro,teacher
+la maestra,teacher
+de,of
+espanol,spanish
+el pais,country
+perdon,pardon
+por favor,please
+gracias,thank you
+de nada,you are welcome
+nada,nothing
+el senior,mister
+la senora,miss
+la senorita,miss
+si,yes
+no,no
+que tiempo hace,what is the weather
+tiempo,weather
+hace calor,it is hot
+calor,hot
+hace frio,it is cold
+frio,cold
+hace sol,it is sunny
+sol,sun
+hace viento,it is windy
+viento,wind
+llueve,rain
+nieva,snow
+de donde es usted,where are you from
+donde,where
+soy de,i am from
+es de,i am from
+alquilar,to rent
+andar en patineta,skateboard
+andar,to walk
+patineta,skateboard
+aprender el espanol,learn spanish
+aprender,to learn
+beber,to drink
+comer,to eat
+comprar,to buy
+correr,to run
+descantar,to rest
+dibujar,to draw
+escribe correos electronicos,write email
+escribir,to write
+escuchar,to listen
+musica,music
+estudiar,to study
+hablar por telefono,talk on the telephone
+hablar,to talk
+hacer la tarea,to do homework
+tarea,homework
+jugar al futbol,to play soccer
+jugar,to play (fun)
+leer un libro,read a book
+leer,to read
+libro,book
+mirar la television,watch television
+mirar,to watch
+montar un bicicleta,ride a bike
+montar,to mount
+bicicleta,bike
+pasar un rato,spend time
+pasar, to happen
+con,with
+amigos,friends
+amigas,friends
+pasear,to take a walk
+practicar,to practice
+deportes,sports
+preparar,to prepare
+preparar la comida,prepare food
+comida,food
+tocar,to play (music)
+tocar la guitarra,play the guitar
+guitarra,guitar
+trabajar,to work
+el aqua,water
+la fruta,fruit
+la galleta,cookie
+el helado,ice cream
+jugo,juice
+las papas fritas,french fries
+las papas,potato
+frita,fried
+la pizza,pizza
+el refresco,soda
+que te gusta hacer,what do you like to do
+la actividad,activity
+antes de,before
+despues de,after
+la escuela,school
+o,or
+pero,but
+tambien,also

@@ -1,0 +1,148 @@
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Spanish</title>
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+<style>
+body {
+  background-color: white;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+#cards > button {
+  bottom: 16px;
+  height: 56px;
+  left: 16px;
+  position: absolute;
+  width: 56px;
+}
+
+#cards p {
+  margin: 0;
+  padding: 0;
+}
+
+#cards > .reveal {
+  display: flex;
+  flex-grow: 1;
+  font-size: 24px;
+  justify-content: center;
+  width: 100%;
+}
+
+#cards > .reveal > p {
+  background-color: lightgray;
+  border: dashed 2px gray;  
+  margin: 32px;
+  text-align: center;
+  width: 100%;
+}
+
+#cards > .word {
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+  font-size: 36px;
+  justify-content: center;
+  width: 100%;
+}
+
+.showing {
+  background-color: white !important;
+  border: dashed 2px white !important;
+}
+
+.screen {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+</style>
+
+</head>
+<body>
+
+<div id="cards" class="screen">
+  <div class="word">
+    <p>&nbsp;</p>
+  </div>
+  <div class="reveal">
+    <p class="reveal">&nbsp;</p>
+  </div>
+</div>
+
+<script>
+class Spanish {
+  constructor() {
+    this.data = [];
+
+    this.screens = document.querySelectorAll( 'div.screen' );
+    
+    for( let s = 0; s < this.screens.length; s++ ) {
+      this.screens[s].style.width = window.innerWidth + 'px';
+      this.screens[s].style.height = window.innerHeight + 'px';
+    }
+
+    this.cards = document.querySelector( '#cards' );
+    this.word = document.querySelector( '#cards > .word > p' );
+    this.word.parentElement.addEventListener( 'touchstart', ( evt ) => this.doWordTouch( evt ) );    
+    this.reveal = document.querySelector( '#cards > .reveal > p' );
+    this.reveal.addEventListener( 'touchstart', ( evt ) => this.doRevealTouch( evt ) );
+
+    fetch( 'spanish.1.txt' )
+    .then( ( result ) => { return result.text(); } )
+    .then( ( text ) => {
+      let words = text.split( '\n' );
+
+      for( let w = 0; w < words.length; w++ ) {
+        let line = words[w].split( ',' );
+        this.data.push( {
+          spanish: line[0].trim(),
+          english: line[1].trim()
+        } );
+      }
+
+      this.play();
+    } );
+  }
+
+  play() {
+    let index = Math.floor( Math.random() * this.data.length );
+
+    this.word.innerHTML = this.data[index].spanish;
+    this.reveal.innerHTML = '&nbsp;';
+    this.reveal.classList.remove( 'showing' );
+    this.reveal.setAttribute( 'data-english', this.data[index].english );
+  }
+
+  doWordTouch( evt ) {
+    this.play();
+  }
+
+  doRevealTouch( evt ) {
+    if( this.reveal.classList.contains( 'showing' ) ) {
+      this.reveal.classList.remove( 'showing' );
+      this.reveal.innerHTML = '&nbsp;';
+    } else {
+      this.reveal.classList.add( 'showing' );
+      this.reveal.innerHTML = this.reveal.getAttribute( 'data-english' );      
+    }
+  }
+}
+
+let app = new Spanish();
+</script>
+
+</body>
+</html>
