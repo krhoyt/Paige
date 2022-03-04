@@ -2,45 +2,89 @@
 <html>
 <head>
 
-<meta charset="UTF-8">
-<title>Paige Hoyt</title>
+	<meta charset="UTF-8">
+	<meta name="theme-color" content="#0c4c96">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"> 	
+	<meta name="description" content="The life and times of a girl on the move.">	
 
-<!-- The Life and Times of a Girl on the Move -->
-<!-- Now hosted by Netlify -->
+	<title>Paige Hoyt</title>
 
-<style type="text/css">
-.mountains {
-	background-image: url( mountains.jpg );
-	background-position: center top;
-	background-repeat: none;
-	background-size: 100% 100%;
-	bottom: 0px;
-	left: 0px;
-	position: absolute;
-	right: 0px;
-	top: 0px;
-}
+	<style type="text/css">
+		html {
+			height: 100%;
+		}
 
-.paige {
-	background-color: #FFF;
-	border: 15px solid #FFF;
-	bottom: 90px;
-	-moz-box-shadow:    4px 4px 8px 8px rgba( 0, 0, 0, 0.15 );
-	-webkit-box-shadow: 4px 4px 8px 8px rgba( 0, 0, 0, 0.15 );
-	box-shadow:         4px 4px 8px 8px rgba( 0, 0, 0, 0.15 );	
-	position: absolute;
-	-moz-transform: rotate( -4deg );
-	-webkit-transform: rotate( -4deg );
-	transform: rotate( -4deg );	
-	right: 90px;
-}
-</style>
+		body {
+			box-sizing: border-box;
+			height: 100%;
+			margin: 0;
+			overflow: hidden;			
+			padding: 0;
+			width: 100%;
+		}
+
+		div {
+			align-items: center;
+			background-image: url( mountains.jpg );
+			background-position: center;
+			background-repeat: none;
+			background-size: cover;
+			bottom: 0;
+			box-sizing: border-box;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+			left: 0;
+			position: absolute;
+			right: 0;
+			top: 0;
+		}
+
+		img {
+			box-shadow: 4px 4px 8px 8px rgba( 0, 0, 0, 0.15 );			
+			box-sizing: border-box;
+			margin: 0 0 35px 0;
+			transform: rotate( -4deg );			
+		}
+
+		@media only screen and ( min-width: 320px ) {
+			img { 
+				border: 8px solid #ffffff;					
+				width: 250px; 
+			}
+		}		
+
+		@media only screen and ( min-width: 375px ) {
+			img { 
+				width: 275px; 
+			}
+		}			
+
+		@media only screen and ( min-width: 768px ) {
+			div {
+				align-items: flex-end;
+			}
+				
+			img { 
+				margin: 0 35px 35px 0;
+				width: 320px; 
+			}
+		}								
+
+		@media only screen and ( min-width: 768px ) {
+			img { 
+				border: 12px solid #ffffff;									
+				width: 375px; 
+			}			
+		}		
+	</style>
 
 </head>
 <body>
 
-<div class="mountains"></div>
-<img class="paige" src="paige.jpg" width="400" height="350">
+	<div>
+		<img src="paige.jpg">
+	</div>
 
 </body>
 </html>
