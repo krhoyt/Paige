@@ -167,7 +167,7 @@
 <body>
 
 	<div>
-		<img src="bear.jpg" />
+		<img id="bear" src="bear.jpg" />
 		<img src="bear.svg" />
 	</div>
 	<div>
@@ -184,6 +184,14 @@
 		<a class="button" href="https://www.amazon.com/hz/wishlist/dl/ls/20UF957ZWNSLU">View My Wish List</a>
 		<img src="bear.svg" />
 	</div>
+
+
+	<script src="./lib/js-confetti.browser.js"></script>
+	<script>
+		const confetti = new JSConfetti();
+		const picture = document.querySelector( '#bear' );
+		picture.addEventListener( 'click', () => confetti.addConfetti() );
+	</script>
 
 </body>
 </html>
