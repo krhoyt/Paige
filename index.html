@@ -9,6 +9,8 @@
 
 	<title>Paige Hoyt</title>
 
+	<link rel="icon" type="image/x-icon" href="bear.svg" />	
+
 	<style type="text/css">
 		html {
 			height: 100%;
@@ -51,6 +53,7 @@
 		div:first-of-type {
 			background-color: #013c65;
 			border-right: solid 5px #f6b000;
+			position: relative;
 		}
 
 		div:first-of-type img:first-of-type {
@@ -74,11 +77,31 @@
 			text-rendering: optimizeLegibility;
 		}
 
+		h3 {
+			bottom: 20px;
+			color: #f6b000;
+			font-size: 16px;
+			font-weight: 200;
+			left: 0;
+			margin: 0;
+			padding: 0;
+			position: absolute;
+			right: 0;
+			text-align: center;
+		}
+
 		p {
 			font-size: 16px;
 			line-height: 1.6em;
 			text-rendering: optimizeLegibility;
 			width: 60%;
+		}
+
+		plh-countdown {
+			bottom: 50px;
+			left: 50px;
+			position: absolute;
+			transform: rotate( 15deg );
 		}
 
 		@media only screen and ( min-width: 320px ) and ( max-width: 479px ) {
@@ -99,6 +122,7 @@
 			}
 
 			div:first-of-type img:first-of-type {
+				margin: 0 0 20px 0;
 				width: 55%;
 			}
 
@@ -168,6 +192,7 @@
 
 	<div>
 		<img id="bear" src="bear.jpg" />
+		<h3></h3>		
 		<img src="bear.svg" />
 	</div>
 	<div>
@@ -184,13 +209,44 @@
 		<a class="button" href="https://www.amazon.com/hz/wishlist/dl/ls/20UF957ZWNSLU">View My Wish List</a>
 		<img src="bear.svg" />
 	</div>
+	<plh-countdown hidden label="Move in!"></plh-countdown>	
 
-
+	<script src="countdown.js" type="module"></script>
 	<script src="./lib/js-confetti.browser.js"></script>
 	<script>
 		const confetti = new JSConfetti();
 		const picture = document.querySelector( '#bear' );
 		picture.addEventListener( 'click', () => confetti.addConfetti() );
+
+		const countdown = document.querySelector( 'h3' );
+		const end = new Date( Date.UTC( 2023, 7, 12, 6, 0, 0, 0 ) );
+		let interval = null;
+		update();
+
+		// Web component
+		// const countdown = document.querySelector( 'plh-countdown' );		
+		// countdown.endDate = end.getTime();
+		// countdown.start();
+
+
+		function update() {
+			if( interval === null ) {
+				interval = setInterval( update, 1000 );
+			}
+
+			let delta = Math.abs( end.getTime() - Date.now() ) / 1000;
+
+			const days = Math.floor( delta / 86400 );
+			delta -= days * 86400;
+
+			const hours = Math.floor( delta / 3600 ) % 24;
+			delta -= hours * 3600;
+
+			const minutes = Math.floor( delta / 60 ) % 60;
+
+			// TODO: Singular labels
+			countdown.innerText = `Move in: ${days} days, ${hours} hours, ${minutes + 1} minutes`;
+		}
 	</script>
 
 </body>
