@@ -222,6 +222,8 @@
 		const end = new Date( Date.UTC( 2023, 7, 12, 6, 0, 0, 0 ) );
 		let interval = null;
 		update();
+
+		// Web component
 		// const countdown = document.querySelector( 'plh-countdown' );		
 		// countdown.endDate = end.getTime();
 		// countdown.start();
@@ -229,7 +231,7 @@
 
 		function update() {
 			if( interval === null ) {
-				setInterval( update, 1000 );
+				interval = setInterval( update, 1000 );
 			}
 
 			let delta = Math.abs( end.getTime() - Date.now() ) / 1000;
