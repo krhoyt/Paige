@@ -30,9 +30,27 @@ export default class PaigePost extends HTMLElement {
           flex-direction: row;
         }
 
+        input {
+          appearance: none;
+          border: none;
+          border-bottom: solid 1px #737373;
+          font-size: 16px;
+          text-rendering: optimizeLegibility;
+          margin: 0;
+          outline: none;
+          padding: 0 0 16px 0;
+          width: 480px;
+        }
+
+        input::placeholder {
+          color: #737373;
+          opacity: 1.0;
+        }
+
         p {
           margin: 0;
           padding: 0;
+          text-rendering: optimizeLegibility;          
         }
 
         #author {
@@ -47,6 +65,14 @@ export default class PaigePost extends HTMLElement {
           height: 40px;
           object-fit: cover;   
           width: 40px;
+        }
+
+        #comments {
+          margin: 16px 0 16px 0;
+        }
+
+        #comments p {
+          color: #737373;
         }
 
         #controls {
@@ -73,7 +99,7 @@ export default class PaigePost extends HTMLElement {
 
         #description {
           line-height: 20px;
-          padding: 8px 0 0 0;
+          padding: 16px 0 32px 0;
           width: 480px;
         }
 
@@ -94,27 +120,36 @@ export default class PaigePost extends HTMLElement {
           padding: 8px 0 0 0;
         }
 
+        #line {
+          color: #737373;
+          font-size: 10px;
+        }
+
         #location {
           font-size: 16px;
           padding: 4px 0 0 16px;
         }
 
         #posted {
-          color: #737373;
           font-size: 16px;
           padding: 0 0 0 4px;
+        }
+
+        :host( :not( [comments] ) ) #comments p:first-of-type {
+          display: none;
         }
       </style>
       <div class="row" style="align-items: center;">
         <img id="avatar" />
         <div class="column">
           <div class="row">
-            <p><span id="author"></span>&#9679;<span id="posted">5d</span></p>
+            <p id="line"><span id="author"></span>&#9679;<span id="posted">5d</span></p>
           </div>
           <p id="location"></p>
         </div>
       </div>
       <img id="image" />
+      <!--
       <div id="controls" class="row">
         <button>
           <img src="heart.svg" />
@@ -131,17 +166,21 @@ export default class PaigePost extends HTMLElement {
         </button>                        
       </div>
       <p id="likes"><span></span> likes</p>
+      -->
       <p id="description"><span></span> <span></span></p>
-      <div>
+      <!--
+      <div id="comments">
         <p>View all <span>2</span> comments</p>
+        <p>No comments yet.</p>
       </div>
-      <div>
-        <input placeholder="Add a comment..." />
-      </div>
+      <input placeholder="Add a comment..." />
+      -->
     `;
+    
 
     // Private
     this._data = null;
+    this._time = new TimeAgo( 'en-US' );
 
     // Root
     this.attachShadow( {mode: 'open'} );
@@ -150,21 +189,25 @@ export default class PaigePost extends HTMLElement {
     // Elements
     this.$author = this.shadowRoot.querySelector( '#author' );
     this.$avatar = this.shadowRoot.querySelector( '#avatar' );
+    // this.$comments = this.shadowRoot.querySelector( '#comments p span' );
     this.$description = this.shadowRoot.querySelector( '#description span:last-of-type' );
     this.$description_author = this.shadowRoot.querySelector( '#description span:first-of-type' );
     this.$image = this.shadowRoot.querySelector( '#image' );
-    this.$likes = this.shadowRoot.querySelector( '#likes span' );
+    // this.$likes = this.shadowRoot.querySelector( '#likes span' );
     this.$location = this.shadowRoot.querySelector( '#location' );    
+    this.$posted = this.shadowRoot.querySelector( '#posted' );
   }
 
   // When things change
   _render() {
+    this.$posted.innerText = this._time.format( Date.now() - new Date( '2023-06-16' ).getTime() );
     this.$author.innerText = this.author === null ? '' : this.author;
     this.$description.innerText = this.description === null ? '' : this.description;
     this.$description_author.innerText = this.author === null ? '' : this.author;
     this.$avatar.src = this.avatar === null ? '' : this.avatar;
     this.$image.src = this.image === null ? '' : this.image;
-    this.$likes.innerText = this.likes === null ? '0' : this.likes;    
+    // this.$likes.innerText = this.likes === null ? '0' : this.likes;    
+    // this.$comments.innerText = this.comments === null ? '0' : this.comments;    
     this.$location.innerText = this.location === null ? '' : this.location;    
   }
 
@@ -182,6 +225,7 @@ export default class PaigePost extends HTMLElement {
   connectedCallback() {
     this._upgrade( 'author' );        
     this._upgrade( 'avatar' );    
+    this._upgrade( 'comments' );
     this._upgrade( 'concealed' );
     this._upgrade( 'data' );
     this._upgrade( 'description' );
@@ -197,6 +241,7 @@ export default class PaigePost extends HTMLElement {
     return [
       'author',
       'avatar',
+      'comments',
       'concealed',
       'description',
       'hidden',
@@ -257,6 +302,22 @@ export default class PaigePost extends HTMLElement {
       this.removeAttribute( 'avatar' );
     }
   }  
+
+  get comments() {
+    if( this.hasAttribute( 'comments' ) ) {
+      return parseInt( this.getAttribute( 'comments' ) );
+    }
+
+    return null;
+  }
+
+  set comments( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'comments', value );
+    } else {
+      this.removeAttribute( 'comments' );
+    }
+  }    
 
   get concealed() {
     return this.hasAttribute( 'concealed' );

@@ -2,10 +2,119 @@
   {
     "author": "paige_splash",
     "avatar": "paige.jpg",
-    "postedAt": "2023-08-01",
-    "image": "paige.jpg",
+    "postedAt": "2023-06-16",
+    "image": "images/2023.06.16.jpg",
     "likes": 23,
+    "comments": 2,
+    "location": "Lincoln, Nebraska",
+    "description": "So there I was in Mexico. Taking down my cartel competition."
+  }, {
+    "author": "paige_splash",
+    "avatar": "paige.jpg",
+    "postedAt": "2021-10-09",
+    "image": "images/2021.10.09.jpg",
+    "likes": 23,
+    "comments": 2,
+    "location": "Willow Creek Park",
+    "description": "So there I was in Mexico. Taking down my cartel competition."
+  }, {
+    "author": "paige_splash",
+    "avatar": "paige.jpg",
+    "postedAt": "2020-08-12",
+    "image": "images/2020.08.12.jpg",
+    "likes": 23,
+    "comments": 2,
+    "location": "Highlands Ranch, Colorado",
+    "description": "So there I was in Mexico. Taking down my cartel competition."
+  }, {
+    "author": "paige_splash",
+    "avatar": "paige.jpg",
+    "postedAt": "2019-12-05",
+    "image": "images/2019.12.05.jpg",
+    "likes": 23,
+    "comments": 2,
+    "location": "Frisco, Colorado",
+    "description": "So there I was in Mexico. Taking down my cartel competition."
+  }, {
+    "author": "paige_splash",
+    "avatar": "paige.jpg",
+    "postedAt": "2018-07-10",
+    "image": "images/2018.07.10.jpg",
+    "likes": 23,
+    "comments": 2,
+    "location": "Parker, Colorado",
+    "description": "So there I was in Mexico. Taking down my cartel competition."
+  }, {
+    "author": "paige_splash",
+    "avatar": "paige.jpg",
+    "postedAt": "2017-07-01",
+    "image": "images/2017.07.01.jpg",
+    "likes": 23,
+    "comments": 2,
+    "location": "221B Baker Street, London",
+    "description": "So there I was in Mexico. Taking down my cartel competition."
+  }, {
+    "author": "paige_splash",
+    "avatar": "paige.jpg",
+    "postedAt": "2016-04-12",
+    "image": "images/2016.04.12.jpg",
+    "likes": 23,
+    "comments": 2,
+    "location": "Belize City, Belize",
+    "description": "So there I was in Mexico. Taking down my cartel competition."
+  }, {
+    "author": "paige_splash",
+    "avatar": "paige.jpg",
+    "postedAt": "2015-07-29",
+    "image": "images/2015.07.29.jpg",
+    "likes": 23,
+    "comments": 2,
+    "location": "Outlets at Castle Rock",
+    "description": "So there I was in Mexico. Taking down my cartel competition."
+  }, {
+    "author": "paige_splash",
+    "avatar": "paige.jpg",
+    "postedAt": "2014-06-14",
+    "image": "images/2014.06.14.jpg",
+    "likes": 23,
+    "comments": 2,
+    "location": "SkyVenture Colorado",
+    "description": "So there I was in Mexico. Taking down my cartel competition."
+  }, {
+    "author": "paige_splash",
+    "avatar": "paige.jpg",
+    "postedAt": "2013-12-11",
+    "image": "images/2013.12.11.jpg",
+    "likes": 23,
+    "comments": 2,
+    "location": "Tiger Rock Taekwondo",
+    "description": "So there I was in Mexico. Taking down my cartel competition."
+  }, {
+    "author": "paige_splash",
+    "avatar": "paige.jpg",
+    "postedAt": "2012-04-07",
+    "image": "images/2012.04.07.jpg",
+    "likes": 23,
+    "comments": 2,
+    "location": "Parker, Colorado",
+    "description": "So there I was in Mexico. Taking down my cartel competition."
+  }, {
+    "author": "paige_splash",
+    "avatar": "paige.jpg",
+    "postedAt": "2011-04-29",
+    "image": "images/2011.04.29.jpg",
+    "likes": 23,
+    "comments": 2,
+    "location": "Southeast Christian School",
+    "description": "So there I was in Mexico. Taking down my cartel competition."
+  }, {
+    "author": "paige_splash",
+    "avatar": "paige.jpg",
+    "postedAt": "2010-10-21",
+    "image": "images/2010.10.21.jpg",
+    "likes": 23,
+    "comments": 2,
     "location": "Puerta Vallarta, Mexico",
     "description": "So there I was in Mexico. Taking down my cartel competition."
-  }
+  }  
 ]
