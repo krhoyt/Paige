@@ -67,6 +67,15 @@
 			text-rendering: optimizeLegibility;
 		}
 
+		header div a img {
+			display: none;
+			height: 24px;
+			margin: 0;
+			object-fit: contain;
+			padding: 0;
+			width: 24px;
+		}
+
 		h1 {
 			font-family: Billabong;
 			font-size: 48px;
@@ -85,6 +94,45 @@
 		plh-post:last-of-type {
 			border-bottom: none;
 		}
+
+		@media only screen and ( max-width: 480px )  {
+			header div a span {
+				display: none;
+			}
+
+			header div a {
+				align-items: center;
+				border: none;
+				display: flex;			
+				justify-content: center;
+				padding: 0;
+				width: 42px;
+			}
+
+			header div a img {			
+				display: inline-block;
+			}
+
+			h1 {
+				font-size: 42px;
+				grid-area:  1 / 1 / 2 / 2;
+				padding: 16px 0 16px 16px;
+				text-align: left;
+			}
+
+			plh-post {
+				--post-border-radius: 0;
+				--post-width: 100vw;
+			}
+
+			plh-post::part( avatar ) {
+				margin: 0 0 0 16px;
+			}
+
+			plh-post::part( description ) {
+				padding: 16px 16px 32px 16px;
+			}			
+		}		
 	</style>
 
 </head>
@@ -93,7 +141,10 @@
 <header>
 	<h1>Instapaige</h1>
 	<div>
-		<a href="https://www.amazon.com/hz/wishlist/dl/ls/20UF957ZWNSLU" target="_blank">Wish list</a>
+		<a href="https://www.amazon.com/hz/wishlist/dl/ls/20UF957ZWNSLU" target="_blank">
+			<span>Wish list</span>
+			<img src="shopping_cart.svg" />
+		</a>
 	</div>
 </header>
 
@@ -112,6 +163,7 @@
 			const post = document.createElement( 'plh-post' );
 			post.author = posts[p].author;
 			post.avatar = posts[p].avatar;
+			post.posted = new Date( posts[p].postedAt ).getTime();
 			post.description = posts[p].description;
 			post.image = posts[p].image;
 			post.likes = posts[p].likes;			

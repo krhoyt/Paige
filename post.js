@@ -20,6 +20,10 @@ export default class PaigePost extends HTMLElement {
           display: none;
         }
 
+        div {
+          box-sizing: border-box;
+        }
+
         div.column {
           display: flex;
           flex-direction: column;
@@ -39,7 +43,7 @@ export default class PaigePost extends HTMLElement {
           margin: 0;
           outline: none;
           padding: 0 0 16px 0;
-          width: 480px;
+          width: var( --post-width, 480px );
         }
 
         input::placeholder {
@@ -48,6 +52,7 @@ export default class PaigePost extends HTMLElement {
         }
 
         p {
+          box-sizing: border-box;
           margin: 0;
           padding: 0;
           text-rendering: optimizeLegibility;          
@@ -77,7 +82,7 @@ export default class PaigePost extends HTMLElement {
 
         #controls {
           padding: 8px 0 0 0;
-          width: 480px;
+          width: var( --post-width, 480px );
         }
 
         #controls button {
@@ -100,7 +105,7 @@ export default class PaigePost extends HTMLElement {
         #description {
           line-height: 20px;
           padding: 16px 0 32px 0;
-          width: 480px;
+          width: var( --post-width, 480px );
         }
 
         #description span:first-of-type {
@@ -108,11 +113,11 @@ export default class PaigePost extends HTMLElement {
         }
 
         #image {
-          border-radius: 8px;
-          height: 480px;
+          border-radius: var( --post-border-radius, 8px );
+          height: var( --post-width, 480px );
           object-fit: cover;
           margin: 16px 0 0 0;
-          width: 480px;
+          width: var( --post-width, 480px );
         }
 
         #likes {
@@ -140,7 +145,7 @@ export default class PaigePost extends HTMLElement {
         }
       </style>
       <div class="row" style="align-items: center;">
-        <img id="avatar" />
+        <img id="avatar" part="avatar" />
         <div class="column">
           <div class="row">
             <p id="line"><span id="author"></span>&#9679;<span id="posted">5d</span></p>
@@ -167,7 +172,7 @@ export default class PaigePost extends HTMLElement {
       </div>
       <p id="likes"><span></span> likes</p>
       -->
-      <p id="description"><span></span> <span></span></p>
+      <p id="description" part="description"><span></span> <span></span></p>
       <!--
       <div id="comments">
         <p>View all <span>2</span> comments</p>
@@ -200,7 +205,7 @@ export default class PaigePost extends HTMLElement {
 
   // When things change
   _render() {
-    this.$posted.innerText = this._time.format( Date.now() - new Date( '2023-06-16' ).getTime() );
+    this.$posted.innerText = this.posted === null ? this._time.format( Date.now() ) : this._time.format( this.posted );
     this.$author.innerText = this.author === null ? '' : this.author;
     this.$description.innerText = this.description === null ? '' : this.description;
     this.$description_author.innerText = this.author === null ? '' : this.author;
@@ -232,7 +237,8 @@ export default class PaigePost extends HTMLElement {
     this._upgrade( 'hidden' );
     this._upgrade( 'image' );    
     this._upgrade( 'likes' );        
-    this._upgrade( 'location' );        
+    this._upgrade( 'location' ); 
+    this._upgrade( 'posted' );               
     this._render();
   }
 
@@ -247,7 +253,8 @@ export default class PaigePost extends HTMLElement {
       'hidden',
       'image',
       'likes',
-      'location'
+      'location',
+      'posted'
     ];
   }
 
@@ -422,6 +429,22 @@ export default class PaigePost extends HTMLElement {
       this.removeAttribute( 'location' );
     }
   }     
+
+  get posted() {
+    if( this.hasAttribute( 'posted' ) ) {
+      return parseInt( this.getAttribute( 'posted' ) );
+    }
+
+    return null;
+  }
+
+  set posted( value ) {
+    if( value !== null ) {
+      this.setAttribute( 'posted', value );
+    } else {
+      this.removeAttribute( 'posted' );
+    }
+  }  
 }
 
 window.customElements.define( 'plh-post', PaigePost );
