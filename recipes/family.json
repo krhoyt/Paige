@@ -1,0 +1,38 @@
+[{
+  "title": "Cheeseburger Soup",
+  "description": "Description",
+  "ingredients": [
+    {"header": null, "order": 1, "value": "4 tbsp butter, divided"},
+    {"header": null, "order": 2, "value": "1/2 pound lean ground beef"},
+    {"header": null, "order": 3, "value": "3/4 cup chopped yellow onion"},
+    {"header": null, "order": 4, "value": "3/4 cup shredded carrots"},    
+    {"header": null, "order": 5, "value": "3/4 cup chopped celery"},    
+    {"header": null, "order": 6, "value": "1 tsp dried basil"},    
+    {"header": null, "order": 7, "value": "1 tsp dried parsley"},        
+    {"header": null, "order": 8, "value": "4 cups cubed potatoes"},            
+    {"header": null, "order": 9, "value": "3 cups chicken broth"},                
+    {"header": null, "order": 10, "value": "1/4 cup all-purpose flour"},                    
+    {"header": null, "order": 11, "value": "1 1/2 cups milk"},                        
+    {"header": null, "order": 12, "value": "2 cups cubed cheddar cheese"},                            
+    {"header": null, "order": 13, "value": "1/4 cup sour cream"}
+  ],
+  "directions": [
+    {"header": null, "order": 1, "value": "Melt 1 tablespoon butter in a large pot over medium heat; add ground beef, onion, carrots, and celery. Cook and stir until beef is browned and crumbly, 5 to 7 minutes."},
+    {"header": null, "order": 2, "value": "Stir in basil and parsley. Add potatoes and broth and bring to a boil; reduce heat to low and simmer until potatoes are tender, 10 to 12 minutes."},    
+    {"header": null, "order": 3, "value": "Melt remaining 3 tablespoons butter in a small saucepan over medium heat. Add flour and whisk until smooth, about 1 minute. Gradually whisk in milk; simmer and stir until sauce is thick and smooth."},        
+    {"header": null, "order": 4, "value": "Stir sauce into soup, stirring constantly. Bring to a boil; reduce heat to low and stir in cheese until melted. Add sour cream; stir until just heated through."},            
+    {"header": null, "order": 5, "value": "Serve hot and enjoy!"}
+  ],
+  "servings": 8,
+  "yield": null,
+  "timing": [
+    {"header": "Prep time", "order": 1, "value": 20, "units": "minutes"},
+    {"header": "Cook time", "order": 2, "value": 30, "units": "minutes"} 
+  ],
+  "notes": [
+    {"order": 1, "value": "You can put all the sauce ingredients (Step #1 and #2) in a crock pot for the day, and pick up at \"Step #3\" when you are ready for dinner."},
+    {"order": 2, "value": "If you just do not have the time to cut up the potatoes, you can use a bag of frozen cubed potatoes."},
+    {"order": 3, "value": "We have experimented with Velveeta cheese in the past, and it is surprisingly good. Otherwise, a sharp cheddar will get you there."}
+  ],
+  "photos": []
+}]
