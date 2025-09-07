@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Food - Paige Hoyt</title>
+
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+    <style>
+      body {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: 0;
+        padding: 64px;
+      }
+
+      dialog {
+        border: none;
+        border-radius: 12px;
+        box-shadow: 
+          0 0 40px -10px rgba( 0, 0, 0, 0.30 ), 
+          0 0 25px -15px rgba( 0, 0, 0, 0.20 );          
+        box-sizing: border-box;
+        max-height: 80vh;
+        width: 80%;
+      }
+
+      dialog h1,
+      dialog h2 {        
+        color: #272727;
+        font-family: sans-serif;
+        font-weight: 700;
+        margin: 16px;
+        padding: 0;
+      }
+
+      dialog h1 {
+        flex-basis: 0;
+        flex-grow: 1;
+      }
+
+      dialog header {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+      }
+
+      dialog header div {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+      }
+
+      dialog header button {
+        appearance: none;
+        background: none;
+        box-sizing: border-box;
+        border: solid 1px #00000040;
+        border-radius: 4px;
+        color: #272727;
+        cursor: pointer;
+        font-family: sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+        margin: 0;
+        outline: none;
+        padding: 8px 16px 8px 16px;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      dialog li,      
+      dialog p {
+        color: #272727;
+        font-family: sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        margin: 0 16px 0 16px;
+        padding: 0;        
+      }
+
+      ul.catalog {
+        box-sizing: border-box;
+        display: grid;
+        gap: 64px;
+        grid-template-columns: 1fr 1fr 1fr;
+        list-style: none;
+        margin: 0;
+        max-width: 1200px;
+        min-width: 330px;        
+        padding: 0;
+        width: 100%;
+      }
+
+      ul.catalog li {
+        margin: 0;
+        padding: 0;
+      }
+
+      ul.catalog li button {
+        appearance: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        outline: 0;
+        padding: 0;
+        width: 100%;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      ul.catalog li button h3 {
+        color: #272727;
+        font-family: sans-serif;
+        font-size: 23px;
+        font-weight: 700;
+        line-height: 28px;
+        margin: 16px 0 0 0;
+        padding: 0;
+        text-align: left;
+      }
+
+      ul.catalog li button img {
+        height: 200px;
+        object-fit: cover;
+        width: 100%;
+      }
+
+      @media( max-width: 1000px ) {
+        ul.catalog {
+          grid-template-columns: 1fr 1fr;        
+        }
+      }      
+
+      @media( max-width: 600px ) {
+        dialog {
+          border-radius: 0;
+          box-shadow: unset;
+          height: 100%;
+          margin: 0;
+          max-height: 100%;
+          max-width: 100%;
+          padding: 16px;
+          width: 100%;
+        }
+
+        dialog header {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        dialog header div {
+          padding: 0 0 16px 16px;
+        }
+
+        ul.catalog {
+          grid-template-columns: 1fr;        
+        }
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <ul class="catalog"></ul>
+
+    <dialog>
+      <header>
+        <h1></h1>
+        <div>
+          <button id="copy" type="button">
+            Copy Ingredients
+          </button>
+          <button type="button">
+            Close
+          </button>        
+        </div>
+      </header>
+      <article></article>
+    </dialog>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked-more-lists/lib/index.umd.js"></script>    
+
+    <script>
+      marked.use( markedMoreLists() );
+
+      const article = document.querySelector( 'dialog article' );
+      const close = document.querySelector( 'dialog header button:last-of-type' );
+      close.addEventListener( 'click', () => {
+        dialog.close();
+      } );
+      const copy = document.querySelector( '#copy' );
+      copy.addEventListener( 'click', () => {
+        navigator.clipboard.writeText( ingredients )
+        .then( () => {
+          alert( 'Copied ingredients.' );
+        } );
+      } );
+      const list = document.querySelector( 'ul.catalog' );
+      const dialog = document.querySelector( 'dialog' );
+      const title = document.querySelector( 'dialog h1' );
+
+      let ingredients = null;
+
+      fetch( 'catalog.json' )
+      .then( ( response ) => response.json() )
+      .then( ( data ) => {
+        data.sort( ( a, b ) => {
+          if( a.name > b.name ) return 1;
+          if( a.name < b.name ) return -1;
+          return 0;
+        } );
+
+        for( let d = 0; d < data.length; d++ ) {
+          const item = document.createElement( 'li' );
+          const button = document.createElement( 'button' );
+          const image = document.createElement( 'img' );
+          const title = document.createElement( 'h3' );
+
+          button.addEventListener( 'click', load_recipe );
+          button.setAttribute( 'data-title', data[d].name );
+          button.setAttribute( 'data-source', data[d].source );
+          image.src = data[d].image          
+          button.appendChild( image );
+          title.innerText = data[d].name;
+          button.appendChild( title );
+          item.appendChild( button );
+          list.appendChild( item );
+        }
+      } );
+
+      function load_recipe( evt ) {
+        const source = evt.currentTarget.getAttribute( 'data-source' );
+        title.innerText = evt.currentTarget.getAttribute( 'data-title' );
+
+        fetch( source )
+        .then( ( response ) => response.text() )
+        .then( ( data ) => {
+          let start = data.indexOf( 'Ingredients' );
+          start = data.indexOf( '\n', start ) + 1;
+          const end = data.indexOf( '##', start );
+          ingredients = data.substring( start, end ).trim();
+
+          start = data.indexOf( 'Preparation' ) - 2;
+          data = data.substr( start );
+
+          article.innerHTML = marked.parse( data );
+          dialog.showModal();
+        } );
+      }
+    </script>
+
+  </body>
+</html>

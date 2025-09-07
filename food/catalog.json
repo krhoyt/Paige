@@ -1,0 +1,67 @@
+[
+  {
+    "name": "Tater Tots Casserole",
+    "source": "tater-tots-casserole.md",
+    "image": "tater-tots-casserole.jpg"
+  }, {
+    "name": "Hearty Beef Stew",
+    "source": "hearty-beef-stew.md",
+    "image": "hearty-beef-stew.jpg"    
+  }, {
+    "name": "Crock Pot Thai Chicken Curry",
+    "source": "crock-pot-thai-chicken-curry.md",
+    "image": "crock-pot-thai-chicken-curry.jpg"    
+  }, {
+    "name": "Easy Homemade Gyros",
+    "source": "easy-homemade-gyros.md",
+    "image": "easy-homemade-gyros.jpg"    
+  }, {
+    "name": "Easy Goulash",
+    "source": "easy-goulash.md",
+    "image": "easy-goulash.jpg"    
+  }, {
+    "name": "Basic Homemade Marshmallows",
+    "source": "basic-homemade-marshmallows.md",
+    "image": "basic-homemade-marshmallows.jpg"    
+  }, {
+    "name": "Spaghetti Pie with Cream Cheese",
+    "source": "spaghetti-pie-with-cream-cheese.md",
+    "image": "spaghetti-pie-with-cream-cheese.jpg"        
+  }, {
+    "name": "Perfect Potato Soup",
+    "source": "perfect-potato-soup.md",
+    "image": "perfect-potato-soup.jpg"        
+  }, {
+    "name": "Hash Brown Casserole",
+    "source": "hash-brown-casserole.md",
+    "image": "hash-brown-casserole.jpg"        
+  }, {
+    "name": "Crispy Roasted Parmesan Potatoes",
+    "source": "crispy-roasted-parmesan-potatoes.md",
+    "image": "crispy-roasted-parmesan-potatoes.jpg"        
+  }, {
+    "name": "Cheeseburger Soup",
+    "source": "cheeseburger-soup.md",
+    "image": "cheeseburger-soup.jpg"        
+  }, {
+    "name": "Wisconsin Native Beer Cheese Soup",
+    "source": "wisconsin-native-beer-cheese-soup.md",
+    "image": "wisconsin-native-beer-cheese-soup.jpg"        
+  }, {
+    "name": "Easy Chicken and Noodles",
+    "source": "easy-chicken-and-noodles.md",
+    "image": "easy-chicken-and-noodles.jpg"        
+  }, {
+    "name": "Creamy Lemon Chicken Tortellini",
+    "source": "creamy-lemon-chicken-tortellini.md",
+    "image": "creamy-lemon-chicken-tortellini.jpg"        
+  }, {
+    "name": "Cowboy Meatloaf",
+    "source": "cowboy-meatloaf.md",
+    "image": "cowboy-meatloaf.jpg"        
+  }, {
+    "name": "Easy Fried Rice (a.k.a. Daddy Fried Rice)",
+    "source": "easy-fried-rice.md",
+    "image": "easy-fried-rice.jpg"        
+  }
+]
