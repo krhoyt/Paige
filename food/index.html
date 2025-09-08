@@ -98,8 +98,16 @@
         flex-direction: row;
         margin: 0 0 16px 0;
         padding: 0 0 0 8px;
+        transition: 
+          border 0.15s ease-in-out,
+          box-shadow 0.15s ease-in-out;
         width: 100%;
         -webkit-tap-highlight-color: transparent;
+      }
+
+      label:focus-within {
+        border: solid 1px #0284c7;
+        box-shadow: 0 0 0 3px rgb( from #0284c7 r g b / 0.40 );    
       }
 
       label button {
@@ -280,10 +288,12 @@
 
       const article = document.querySelector( 'dialog article' );
       const clear = document.querySelector( 'label button' );
-      clear.addEventListener( 'click', () => {
+      clear.addEventListener( 'click', ( evt ) => {
+        evt.preventDefault();        
         search.value = '';
         filtered = null;
         load_list( recipes );
+        search.focus();
       } );
       const close = document.querySelector( 'dialog header button:last-of-type' );
       close.addEventListener( 'click', () => {
