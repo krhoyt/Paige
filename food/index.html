@@ -12,10 +12,11 @@
 
     <style>
       body {
+        align-items: center;
         box-sizing: border-box;
         display: flex;
-        flex-direction: row;
-        justify-content: center;
+        flex-direction: column;
+        gap: 16px;
         margin: 0;
         padding: 64px;
       }
@@ -87,6 +88,72 @@
         padding: 0;        
       }
 
+      label {
+        align-items: center;
+        border: solid 1px #00000040;
+        border-radius: 4px;
+        box-sizing: border-box;      
+        cursor: text;  
+        display: flex;
+        flex-direction: row;
+        margin: 0 0 16px 0;
+        padding: 0 0 0 8px;
+        width: 100%;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      label button {
+        appearance: none;
+        align-items: center;
+        background: none;        
+        border: none;
+        box-sizing: border-box;
+        cursor: pointer;
+        display: flex;
+        height: 40px;
+        justify-content: center;
+        margin: 0;
+        opacity: 1.0;
+        outline: none;
+        overflow: hidden;
+        padding: 0;
+        transition:
+          opacity 0.30s ease-in-out,
+          width 0.30s ease-in-out;
+        width: 40px;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      input:placeholder-shown ~ button {
+        opacity: 0;
+        width: 0;
+      }
+
+      label input {
+        appearance: none;
+        background: none;
+        border: none;
+        box-sizing: border-box;
+        color: #272727;
+        flex-basis: 0;
+        flex-grow: 1;
+        font-family: sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        margin: 0;
+        outline: none;
+        padding: 8px 0 8px 8px;
+        min-width: 0;
+        width: 100%;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      label input::placeholder {
+        color: #00000040;
+        opacity: 1.0;
+      }
+
       ul.catalog {
         box-sizing: border-box;
         display: grid;
@@ -95,7 +162,6 @@
         list-style: none;
         margin: 0;
         max-width: 1200px;
-        min-width: 330px;        
         padding: 0;
         width: 100%;
       }
@@ -143,6 +209,10 @@
       }      
 
       @media( max-width: 600px ) {
+        body {
+          padding: 32px;
+        }
+
         dialog {
           border-radius: 0;
           box-shadow: unset;
@@ -164,13 +234,26 @@
         }
 
         ul.catalog {
-          grid-template-columns: 1fr;        
+          grid-template-columns: 1fr;   
+          gap: 32px;     
         }
       }
     </style>
 
   </head>
   <body>
+
+    <label>
+      <svg width="24" height="24" viewBox="0 0 24 24">
+        <path fill="#00000040" d="M9.5 16q-2.725 0-4.612-1.888T3 9.5t1.888-4.612T9.5 3t4.613 1.888T16 9.5q0 1.1-.35 2.075T14.7 13.3l5.6 5.6q.275.275.275.7t-.275.7t-.7.275t-.7-.275l-5.6-5.6q-.75.6-1.725.95T9.5 16m0-2q1.875 0 3.188-1.312T14 9.5t-1.312-3.187T9.5 5T6.313 6.313T5 9.5t1.313 3.188T9.5 14"/>
+      </svg>      
+      <input placeholder="Search" type="text">
+      <button type="button">
+        <svg width="24" height="24" viewBox="0 0 24 24">
+          <path fill="#272727" d="m12 13.4l2.9 2.9q.275.275.7.275t.7-.275t.275-.7t-.275-.7L13.4 12l2.9-2.9q.275-.275.275-.7t-.275-.7t-.7-.275t-.7.275L12 10.6L9.1 7.7q-.275-.275-.7-.275t-.7.275t-.275.7t.275.7l2.9 2.9l-2.9 2.9q-.275.275-.275.7t.275.7t.7.275t.7-.275zm0 8.6q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"/>
+        </svg>        
+      </button>
+    </label>
 
     <ul class="catalog"></ul>
 
@@ -196,6 +279,12 @@
       marked.use( markedMoreLists() );
 
       const article = document.querySelector( 'dialog article' );
+      const clear = document.querySelector( 'label button' );
+      clear.addEventListener( 'click', () => {
+        search.value = '';
+        filtered = null;
+        load_list( recipes );
+      } );
       const close = document.querySelector( 'dialog header button:last-of-type' );
       close.addEventListener( 'click', () => {
         dialog.close();
@@ -207,38 +296,68 @@
           alert( 'Copied ingredients.' );
         } );
       } );
+      const dialog = document.querySelector( 'dialog' );      
       const list = document.querySelector( 'ul.catalog' );
-      const dialog = document.querySelector( 'dialog' );
+      const search = document.querySelector( 'input' );
+      search.addEventListener( 'keyup', () => {
+        if( search.value.trim().length === 0 ) {
+          filtered = null;
+          load_list( recipes );
+        } else {
+          filtered = recipes.filter( ( value ) => {
+            return value.name.toLowerCase().indexOf( search.value.toLowerCase() ) >= 0 ? true : false;
+          } );
+          load_list( filtered );
+        }
+      } );
       const title = document.querySelector( 'dialog h1' );
 
+      let filtered = null;
       let ingredients = null;
+      let recipes = null;
 
       fetch( 'catalog.json' )
       .then( ( response ) => response.json() )
       .then( ( data ) => {
-        data.sort( ( a, b ) => {
+        recipes = [... data];
+        recipes.sort( ( a, b ) => {
           if( a.name > b.name ) return 1;
           if( a.name < b.name ) return -1;
           return 0;
         } );
 
-        for( let d = 0; d < data.length; d++ ) {
+        load_list( recipes );
+      } );
+
+      function load_list( data ) {
+        while( list.children.length > data.length ) {
+          list.children[0].children[0].removeEventListener( 'click', load_recipe );
+          list.children[0].remove();
+        }
+
+        while( list.children.length < data.length ) {
           const item = document.createElement( 'li' );
           const button = document.createElement( 'button' );
           const image = document.createElement( 'img' );
           const title = document.createElement( 'h3' );
 
           button.addEventListener( 'click', load_recipe );
-          button.setAttribute( 'data-title', data[d].name );
-          button.setAttribute( 'data-source', data[d].source );
-          image.src = data[d].image          
           button.appendChild( image );
-          title.innerText = data[d].name;
           button.appendChild( title );
+
           item.appendChild( button );
-          list.appendChild( item );
+
+          list.appendChild( item );          
         }
-      } );
+
+        for( let c = 0; c < list.children.length; c++ ) {
+          console.log( data[c] );
+          list.children[c].children[0].setAttribute( 'data-title', data[c].name );
+          list.children[c].children[0].setAttribute( 'data-source', data[c].source );
+          list.children[c].children[0].children[0].src = data[c].image;     
+          list.children[c].children[0].children[1].innerText = data[c].name;               
+        }
+      }
 
       function load_recipe( evt ) {
         const source = evt.currentTarget.getAttribute( 'data-source' );

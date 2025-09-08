@@ -63,5 +63,17 @@
     "name": "Easy Fried Rice (a.k.a. Daddy Fried Rice)",
     "source": "easy-fried-rice.md",
     "image": "easy-fried-rice.jpg"        
+  }, {
+    "name": "Chipped Beef Gravy",
+    "source": "chipped-beef-gravy.md",
+    "image": "chipped-beef-gravy.jpg"        
+  }, {
+    "name": "Sausage Gravy",
+    "source": "sausage-gravy.md",
+    "image": "sausage-gravy.jpg"        
+  }, {
+    "name": "Steak Garlic Cheese Bread",
+    "source": "steak-garlic-cheese-bread.md",
+    "image": "steak-garlic-cheese-bread.jpg"        
   }
 ]
