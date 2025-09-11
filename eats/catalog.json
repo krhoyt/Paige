@@ -75,5 +75,33 @@
     "name": "Steak Garlic Cheese Bread",
     "source": "steak-garlic-cheese-bread.md",
     "image": "steak-garlic-cheese-bread.jpg"        
+  }, {
+    "name": "Baked Turkey Chimichangas",
+    "source": "baked-turkey-chimichangas.md",
+    "image": "baked-turkey-chimichangas.png"        
+  }, {
+    "name": "Strawberry Pie",
+    "source": "strawberry-pie.md",
+    "image": "strawberry-pie.png"        
+  }, {
+    "name": "Chili",
+    "source": "chili.md",
+    "image": "chili.png"        
+  }, {
+    "name": "Cinnamon Rolls",
+    "source": "cinnamon-rolls.md",
+    "image": "cinnamon-rolls.png"        
+  }, {
+    "name": "Creamy Beer Cheese Sauce",
+    "source": "creamy-beer-cheese-sauce.md",
+    "image": "creamy-beer-cheese-sauce.png"        
+  }, {
+    "name": "One-Pot Mac and Cheese",
+    "source": "one-pot-mac-and-cheese.md",
+    "image": "one-pot-mac-and-cheese.png"        
+  }, {
+    "name": "Crockpot Mac and Cheese",
+    "source": "crockpot-mac-and-cheese.md",
+    "image": "crockpot-mac-and-cheese.png"        
   }
 ]
