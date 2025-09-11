@@ -103,5 +103,9 @@
     "name": "Crockpot Mac and Cheese",
     "source": "crockpot-mac-and-cheese.md",
     "image": "crockpot-mac-and-cheese.png"        
+  }, {
+    "name": "Sweet Alabama Pecan Bread",
+    "source": "sweet-alabama-pecan-bread.md",
+    "image": "sweet-alabama-pecan-bread.png"        
   }
 ]
