@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+	  <meta name="theme-color" content="#013c65">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"> 	
+	  <meta name="description" content="The life and times of a girl on the move.">	    
+
+    <title>Paige Eats</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+	  <link rel="icon" type="image/x-icon" href="/bear.svg" />	
+
+    <style>
+      body {
+        align-items: center;
+        border-top: solid 5px #f6b000;                
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+
+        color: #161616;
+        font-family: 'Open Sans', sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        font-variation-settings: "wdth" 100;
+      }
+
+      figure {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 12px;
+        box-sizing: border-box;
+        height: 300px;
+        margin: 16px;
+        padding: 0;
+        position: relative;
+        width: calc( 100% - 32px );
+      }
+
+      figure button {
+        align-items: center;
+        appearance: none;
+        background: #ffffff;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        display: flex;
+        height: 40px;
+        justify-content: center;
+        margin: 0;
+        outline: none;
+        padding: 0;
+        position: absolute;
+        top: 16px;
+        width: 40px;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      figure button.back {
+        left: 16px;
+      }
+
+      figure button.copy {
+        right: 16px;
+      }      
+
+      li {
+        line-height: 24px;
+      }
+
+      section {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        max-width: 1200px;
+        padding: 0;
+        width: 100%;
+      }
+
+      section article {
+        padding: 0 16px 16px 16px;
+      }
+
+      section h1 {
+        margin: 0;
+        padding: 16px 16px 0 16px;
+      }
+
+      @media( max-width: 1000px ) {      
+        figure {
+          border-radius: 0;
+          margin: 0;
+          width: 100%;
+        }
+      }
+
+      @media( max-width: 600px ) {
+        h1 {
+          font-size: 32px;
+          line-height: 40px;
+        }
+
+        ul {
+          grid-template-columns: 1fr;   
+          gap: 16px;     
+        }
+      }      
+    </style>
+  </head>
+  <body>
+
+    <section>
+      <figure>
+        <button class="back" type="button">
+          <svg width="24" height="24" viewBox="0 0 24 24">
+            <path fill="#161616" d="m7.825 13l4.9 4.9q.3.3.288.7t-.313.7q-.3.275-.7.288t-.7-.288l-6.6-6.6q-.15-.15-.213-.325T4.426 12t.063-.375t.212-.325l6.6-6.6q.275-.275.688-.275t.712.275q.3.3.3.713t-.3.712L7.825 11H19q.425 0 .713.288T20 12t-.288.713T19 13z"/>
+          </svg>          
+        </button>
+        <button class="copy" type="button">
+          <svg width="24" height="24" viewBox="0 0 24 24">
+            <path fill="#161616" d="M9 18q-.825 0-1.412-.587T7 16V4q0-.825.588-1.412T9 2h9q.825 0 1.413.588T20 4v12q0 .825-.587 1.413T18 18zm0-2h9V4H9zm-4 6q-.825 0-1.412-.587T3 20V7q0-.425.288-.712T4 6t.713.288T5 7v13h10q.425 0 .713.288T16 21t-.288.713T15 22zm4-6V4z"/>
+          </svg>          
+        </button>        
+      </figure>
+      <h1></h1>      
+      <article></article>      
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked-more-lists/lib/index.umd.js"></script>    
+
+    <script>
+      marked.use( markedMoreLists() );
+
+      const article = document.querySelector( 'article' );      
+      const back = document.querySelector( 'button.back' );      
+      back.addEventListener( 'click', () => {
+        window.location = '/eats/index.html';
+      } );
+      const copy = document.querySelector( 'button.copy' );
+      copy.addEventListener( 'click', () => {
+        navigator.clipboard.writeText( ingredients )
+        .then( () => {
+          alert( 'Ingredients have been copied to clipboard.' );
+        } );
+      } );
+      const hero = document.querySelector( 'figure' );
+      const title = document.querySelector( 'h1' );
+
+      const params = window.location.search;
+      const search = new URLSearchParams( params );
+      const id = search.get( 'id' );      
+
+      let ingredients = null;      
+
+      fetch( '/eats/catalog.json' )
+      .then( ( response ) => response.json() )
+      .then( ( data ) => {
+        const recipe = data.find( ( value ) => value.id === id );
+        hero.style.backgroundImage = `url( '${recipe.image}' )`;
+        title.textContent = recipe.name;
+        return fetch( `/eats/${recipe.source}` );
+      } )
+      .then( ( response ) => response.text() )
+      .then( ( data ) => {
+        let start = data.indexOf( 'Ingredients' );
+        start = data.indexOf( '\n', start ) + 1;
+        
+        const end = data.indexOf( '##', start );
+        ingredients = data.substring( start, end ).trim();
+
+        start = data.indexOf( 'Preparation' ) - 2;
+        data = data.substr( start );
+
+        article.innerHTML = marked.parse( data );
+      } );
+    </script>
+
+  </body>
+</html>
