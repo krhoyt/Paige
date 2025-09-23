@@ -7,22 +7,21 @@
 	  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"> 	
 	  <meta name="description" content="The life and times of a girl on the move.">	    
 
-    <title>Paige Eats</title>
+    <title>Paige Movie Database</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 	  <link rel="icon" type="image/x-icon" href="/bear.svg" />	
 
     <style>
       body {
         align-items: center;
+        background: #161616;        
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
         margin: 0;
         padding: 0;
-
-        color: #161616;
         font-family: 'Open Sans', sans-serif;
         font-optical-sizing: auto;
         font-weight: 400;
@@ -30,10 +29,28 @@
         font-variation-settings: "wdth" 100;
       }
 
+      footer {
+        align-items: center;
+        border-top: solid 1px #ffffffb2;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      footer a,
+      footer p {
+        color: #ffffff;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 40px;
+        margin: 0;
+        padding: 8px 0 8px 0;
+      }
+
       header {
         align-items: center;
-        background: #ffffff;
-        border-bottom: solid 1px #dbdbdb;
+        background: #1a1a1a;
         box-sizing: border-box;
         display: flex;
         flex-direction: row;
@@ -42,20 +59,22 @@
         width: 100%;
       }
 
-      header h1 {
-        color: #161616;
+      header div {
         flex-basis: 0;
         flex-grow: 1;
-        font-size: 24px;
-        font-weight: 600;
-        letter-spacing: -1.5px;
-        line-height: 40px;
-        margin: 0;
-        padding: 0;
       }
 
-      header h1 span {
-        font-weight: 700;
+      header h1 {
+        background: #f6b000;
+        border-radius: 8px;
+        color: #000000;
+        font-family: 'Anton', sans-serif;
+        font-size: 24px;
+        font-style: normal;        
+        font-weight: 400;
+        line-height: 40px;
+        margin: 0;
+        padding: 0 12px 0 12px;
       }
 
       label {
@@ -78,8 +97,8 @@
       }
 
       label:focus-within {
-        border: solid 1px #013c65;
-        box-shadow: 0 0 0 3px rgb( from #013c65 r g b / 0.40 );    
+        border: solid 1px #f6b000;
+        box-shadow: 0 0 0 3px rgb( from #f6b000 r g b / 0.40 );    
       }
 
       label button {
@@ -137,8 +156,8 @@
       ul {
         box-sizing: border-box;
         display: grid;
-        gap: 24px;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 16px;
+        grid-template-columns: repeat( auto-fit, minmax( 150px, 1fr ) );
         list-style: none;
         margin: 0;
         padding: 32px;
@@ -146,13 +165,19 @@
       }
 
       ul li {
+        align-items: center;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;        
+        display: flex;
+        justify-content: center;
         margin: 0;
+        overflow: hidden;
         padding: 0;
       }
 
       ul li button {
         appearance: none;
-        background: none;
+        background: #1a1a1a;        
         border: none;
         cursor: pointer;
         display: flex;
@@ -160,34 +185,50 @@
         margin: 0;
         outline: 0;
         padding: 0;
-        width: 100%;
+        width: 150px;
         -webkit-tap-highlight-color: transparent;
       }
 
-      ul li button h3 {
-        color: #272727;
-        font-size: 20px;
-        font-weight: 500;
-        line-height: 28px;
-        margin: 8px 0 16px 0;
+      ul li button div {
+        box-sizing: border-box;
+        padding: 8px;
+      }
+      
+      ul li button div h3 {
+        box-sizing: border-box;
+        display: -webkit-box;
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 400;
+        height: 40px;
+        line-clamp: 2;     
+        line-height: 20px;
+        margin: 0;
+        overflow: hidden;
         padding: 0;
         text-align: left;
+        width: 150px;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;           
       }
 
+      ul li button div p {
+        box-sizing: border-box;
+        color: #ffffffb2;
+        font-size: 16px;
+        font-weight: 400;
+        margin: 0;
+        padding: 8px 0 0 0;
+        text-align: left;
+      }      
+
       ul li button img {
-        border-radius: 12px;
-        height: 200px;
-        object-fit: cover;
-        width: 100%;
+        height: 222px;
+        width: 150px;
       }
 
       @media( max-width: 1200px ) {
         header {
-          padding: 16px;
-        }
-
-        ul {
-          grid-template-columns: 1fr 1fr 1fr;        
           padding: 16px;
         }
       }      
@@ -196,27 +237,16 @@
         header {
           padding: 16px;
         }
-
-        ul {
-          grid-template-columns: 1fr 1fr;        
-          padding: 16px;
-        }
       }      
 
       @media( max-width: 600px ) {
         header {
-          border-top: solid 5px #f6b000;                  
+          border-top: solid 5px #f6b000;          
           gap: 32px;
         } 
 
-        header h1 {
+        header div.spacer {
           flex-grow: 0;
-          white-space: nowrap;
-        }
-
-        ul {
-          grid-template-columns: 1fr;   
-          gap: 16px;     
         }
       }
     </style>
@@ -225,12 +255,13 @@
   <body>
 
     <header>
-      <h1>Paige <span>Eats</span></h1>
+      <h1>PMDb</h1>
+      <div class="spacer"></div>
       <label>
         <svg width="24" height="24" viewBox="0 0 24 24">
           <path fill="#161616" d="M9.5 16q-2.725 0-4.612-1.888T3 9.5t1.888-4.612T9.5 3t4.613 1.888T16 9.5q0 1.1-.35 2.075T14.7 13.3l5.6 5.6q.275.275.275.7t-.275.7t-.7.275t-.7-.275l-5.6-5.6q-.75.6-1.725.95T9.5 16m0-2q1.875 0 3.188-1.312T14 9.5t-1.312-3.187T9.5 5T6.313 6.313T5 9.5t1.313 3.188T9.5 14"/>
         </svg>      
-        <input placeholder="Search Paige Eats" type="text">
+        <input placeholder="Search Movies" type="text">
         <button type="button">
           <svg width="24" height="24" viewBox="0 0 24 24">
             <path fill="#161616" d="m12 13.4l2.9 2.9q.275.275.7.275t.7-.275t.275-.7t-.275-.7L13.4 12l2.9-2.9q.275-.275.275-.7t-.275-.7t-.7-.275t-.7.275L12 10.6L9.1 7.7q-.275-.275-.7-.275t-.7.275t-.275.7t.275.7l2.9 2.9l-2.9 2.9q-.275.275-.275.7t.275.7t.7.275t.7-.275zm0 8.6q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"/>
@@ -241,13 +272,29 @@
 
     <ul></ul>
 
+    <footer>
+      <p>Special thanks to <a href="https://themoviedb.org">The Movie Database</a>.</p>
+    </footer>
+
+    <template id="movie">
+      <li>
+        <button type="button">
+          <img />
+          <div>
+            <h3></h3>
+            <p></p>
+          </div>
+        </button>
+      </li>
+    </template>
+
     <script>
       const clear = document.querySelector( 'label button' );
       clear.addEventListener( 'click', ( evt ) => {
         evt.preventDefault();        
         search.value = '';
         filtered = null;
-        load_list( recipes );
+        load_list( movies );
         search.focus();
       } );
       const list = document.querySelector( 'ul' );
@@ -255,62 +302,56 @@
       search.addEventListener( 'keyup', () => {
         if( search.value.trim().length === 0 ) {
           filtered = null;
-          load_list( recipes );
+          load_list( movies );
         } else {
-          filtered = recipes.filter( ( value ) => {
-            return value.name.toLowerCase().indexOf( search.value.toLowerCase() ) >= 0 ? true : false;
+          filtered = movies.filter( ( value ) => {
+            return value.title.toLowerCase().indexOf( search.value.toLowerCase() ) >= 0 ? true : false;
           } );
           load_list( filtered );
         }
       } );
+      const template = document.querySelector( '#movie' );      
 
       let filtered = null;
-      let recipes = null;
+      let movies = null;
 
       fetch( 'catalog.json' )
       .then( ( response ) => response.json() )
       .then( ( data ) => {
-        recipes = [... data];
-        recipes.sort( ( a, b ) => {
-          if( a.name > b.name ) return 1;
-          if( a.name < b.name ) return -1;
+        movies = [... data];
+        movies.sort( ( a, b ) => {
+          if( a.title > b.title ) return 1;
+          if( a.title < b.title ) return -1;
           return 0;
         } );
 
-        load_list( recipes );
+        load_list( movies );
       } );
 
       function load_list( data ) {
         while( list.children.length > data.length ) {
-          list.children[0].children[0].removeEventListener( 'click', load_recipe );
+          list.children[0].children[0].removeEventListener( 'click', load_movie );
           list.children[0].remove();
         }
 
         while( list.children.length < data.length ) {
-          const item = document.createElement( 'li' );
-          const button = document.createElement( 'button' );
-          const image = document.createElement( 'img' );
-          const title = document.createElement( 'h3' );
-
-          button.addEventListener( 'click', load_recipe );
-          button.appendChild( image );
-          button.appendChild( title );
-
-          item.appendChild( button );
-
-          list.appendChild( item );          
+          const clone = template.content.cloneNode( true );
+          const button = clone.querySelector( 'button' );
+          button.addEventListener( 'click', load_movie );          
+          list.appendChild( clone );          
         }
 
         for( let c = 0; c < list.children.length; c++ ) {
           list.children[c].children[0].setAttribute( 'data-id', data[c].id );
-          list.children[c].children[0].children[0].src = data[c].image;     
-          list.children[c].children[0].children[1].innerText = data[c].name;               
+          list.children[c].children[0].children[0].src = '.' + data[c].poster_path;     
+          list.children[c].children[0].children[1].children[0].innerText = data[c].title;               
+          list.children[c].children[0].children[1].children[1].innerText = new Date( data[c].release_date ).getFullYear();                         
         }
       }
 
-      function load_recipe( evt ) {
+      function load_movie( evt ) {
         const id = evt.currentTarget.getAttribute( 'data-id' );
-        window.location = `/eats/recipe.html?id=${id}`;
+        window.location = `https://www.themoviedb.org/movie/${id}`;
       }
     </script>
 
