@@ -54,6 +54,7 @@
         box-sizing: border-box;
         display: flex;
         flex-direction: row;
+        gap: 16px;
         margin: 0;
         padding: 16px 32px 16px 32px;
         width: 100%;
@@ -109,7 +110,7 @@
         box-sizing: border-box;
         cursor: pointer;
         display: flex;
-        height: 40px;
+        height: 38px;
         justify-content: center;
         margin: 0;
         opacity: 1.0;
@@ -119,7 +120,7 @@
         transition:
           opacity 0.30s ease-in-out,
           width 0.30s ease-in-out;
-        width: 40px;
+        width: 38px;
         -webkit-tap-highlight-color: transparent;
       }
 
@@ -137,7 +138,7 @@
         line-height: 24px;
         margin: 0;
         outline: none;
-        padding: 8px 0 8px 8px;
+        padding: 7px 0 7px 8px;
         min-width: 0;
         width: 100%;
         -webkit-tap-highlight-color: transparent;
@@ -242,7 +243,7 @@
       @media( max-width: 600px ) {
         header {
           border-top: solid 5px #f6b000;          
-          gap: 32px;
+          gap: 16px;
         } 
 
         header div.spacer {
@@ -268,6 +269,7 @@
           </svg>        
         </button>
       </label>
+      <db-genre-select></db-genre-select>
     </header>
 
     <ul></ul>
@@ -288,31 +290,31 @@
       </li>
     </template>
 
+    <script src="genre-select.js" type="module"></script>
+
     <script>
       const clear = document.querySelector( 'label button' );
       clear.addEventListener( 'click', ( evt ) => {
         evt.preventDefault();        
         search.value = '';
-        filtered = null;
-        load_list( movies );
+        search_list( null, genre );
         search.focus();
+      } );
+      const filter = document.querySelector( 'db-genre-select' );
+      filter.addEventListener( 'db-change', ( evt ) => {
+        console.log( evt.detail.value );
+        genre = evt.detail.value;
+        search_list( search.value.trim(), genre );
       } );
       const list = document.querySelector( 'ul' );
       const search = document.querySelector( 'input' );
       search.addEventListener( 'keyup', () => {
-        if( search.value.trim().length === 0 ) {
-          filtered = null;
-          load_list( movies );
-        } else {
-          filtered = movies.filter( ( value ) => {
-            return value.title.toLowerCase().indexOf( search.value.toLowerCase() ) >= 0 ? true : false;
-          } );
-          load_list( filtered );
-        }
+        search_list( search.value.trim(), genre );
       } );
       const template = document.querySelector( '#movie' );      
 
       let filtered = null;
+      let genre = null;
       let movies = null;
 
       fetch( 'catalog.json' )
@@ -324,6 +326,16 @@
           if( a.title < b.title ) return -1;
           return 0;
         } );
+
+        let genres = new Set();
+
+        for( let m = 0; m < movies.length; m++ ) {
+          for( let g = 0; g < movies[m].genre_names.length; g++ ) {
+            genres.add( movies[m].genre_names[g] );
+          }
+        }
+
+        filter.data = [... genres];
 
         load_list( movies );
       } );
@@ -352,6 +364,30 @@
       function load_movie( evt ) {
         const id = evt.currentTarget.getAttribute( 'data-id' );
         window.location = `https://www.themoviedb.org/movie/${id}`;
+      }
+
+      function search_list( query, kind = null ) {
+        if( query === null && kind === null ) {
+          filtered = null;
+          load_list( movies );
+          return;
+        }
+
+        filtered = [... movies];
+
+        if( query !== null ) {
+          filtered = movies.filter( ( value ) => {
+            return value.title.toLowerCase().indexOf( search.value.toLowerCase() ) >= 0 ? true : false;
+          } );          
+        }
+
+        if( kind !== null ) {
+          filtered = filtered.filter( ( value ) => {
+            return value.genre_names.find( ( genre ) => genre === kind ? true : false );
+          } );
+        }
+
+        load_list( filtered );
       }
     </script>
 

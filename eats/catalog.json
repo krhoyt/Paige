@@ -149,5 +149,10 @@
     "name": "Oatmeal Butterscotch Cookies",
     "source": "oatmeal-butterscotch-cookies.md",
     "image": "oatmeal-butterscotch-cookies.png"        
+  }, {
+    "id": "5d20f35c-8bab-449d-af2a-1b6f6ba3f263",
+    "name": "Cake Box Cookies",
+    "source": "cake-box-cookies.md",
+    "image": "cake-box-cookies.png"        
   }
 ]
