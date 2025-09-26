@@ -13,7 +13,7 @@
 - 15.25 ounces cake mix (1 box), any flavor
 - 2 large eggs
 - 1/2 cup vegetable oil (or melted butter)
-- Mix-ins (chocolate chips - optional)
+- Mix-ins (chocolate chips, optional)
 
 ## Instructions 
 
