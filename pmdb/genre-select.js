@@ -89,6 +89,7 @@ export default class GenreSelect extends HTMLElement {
         }
 
         ul button span {
+          color: #161616;
           flex-basis: 0;
           flex-grow: 1;
           text-align: left;
