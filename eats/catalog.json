@@ -154,5 +154,20 @@
     "name": "Cake Box Cookies",
     "source": "cake-box-cookies.md",
     "image": "cake-box-cookies.png"        
+  }, {
+    "id": "050b0f50-2583-492a-a518-1979a6028102",
+    "name": "Blueberry Pound Cake",
+    "source": "blueberry-pound-cake.md",
+    "image": "blueberry-pound-cake.png"        
+  }, {
+    "id": "3d02bcc9-dddf-4918-801b-61e81a9827fc",
+    "name": "Make-Ahead Breakfast Casserole",
+    "source": "make-ahead-breakfast-casserole.md",
+    "image": "make-ahead-breakfast-casserole.png"        
+  }, {
+    "id": "63517b59-1cf7-40fc-b9e4-af7ad7804613",
+    "name": "Spicy Bistro Steak Subs",
+    "source": "spicy-bistro-steak-subs.md",
+    "image": "spicy-bistro-steak-subs.png"        
   }
 ]
