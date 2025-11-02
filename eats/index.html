@@ -30,6 +30,18 @@
         font-variation-settings: "wdth" 100;
       }
 
+      h2 {
+        box-sizing: border-box;
+        color: #161616;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 40px;
+        margin: 0;
+        padding: 0 16px 16px 16px;
+        text-align: left;
+        width: 100%;
+      }      
+
       header {
         align-items: center;
         background: #ffffff;
@@ -181,6 +193,10 @@
         width: 100%;
       }
 
+      .hidden {
+        display: none;
+      }      
+
       @media( max-width: 1200px ) {
         header {
           padding: 16px;
@@ -239,7 +255,11 @@
       </label>
     </header>
 
-    <ul></ul>
+    <ul id="eats"></ul>
+
+    <h2>Cutting Block (Undecided)</h2>
+
+    <ul id="experimental"></ul>
 
     <script>
       const clear = document.querySelector( 'label button' );
@@ -247,23 +267,35 @@
         evt.preventDefault();        
         search.value = '';
         filtered = null;
-        load_list( recipes );
+        load_list( recipes, list );
         search.focus();
+
+        cutting_block.classList.remove( 'hidden' );
+        experimental.classList.remove( 'hidden' );        
       } );
-      const list = document.querySelector( 'ul' );
+      const experimental = document.querySelector( '#experimental' );      
+      const cutting_block = document.querySelector( 'h2' );
+      const list = document.querySelector( '#eats' );
       const search = document.querySelector( 'input' );
       search.addEventListener( 'keyup', () => {
         if( search.value.trim().length === 0 ) {
           filtered = null;
-          load_list( recipes );
+          load_list( recipes, list );
+
+          cutting_block.classList.remove( 'hidden' );
+          experimental.classList.remove( 'hidden' );
         } else {
           filtered = recipes.filter( ( value ) => {
             return value.name.toLowerCase().indexOf( search.value.toLowerCase() ) >= 0 ? true : false;
           } );
-          load_list( filtered );
+          load_list( filtered, list );
+
+          cutting_block.classList.add( 'hidden' );
+          experimental.classList.add( 'hidden' );          
         }
       } );
 
+      let experiments = null;
       let filtered = null;
       let recipes = null;
 
@@ -277,16 +309,29 @@
           return 0;
         } );
 
-        load_list( recipes );
+        load_list( recipes, list );
       } );
 
-      function load_list( data ) {
-        while( list.children.length > data.length ) {
-          list.children[0].children[0].removeEventListener( 'click', load_recipe );
-          list.children[0].remove();
+      fetch( 'experimental.json' )
+      .then( ( response ) => response.json() )
+      .then( ( data ) => {
+        experiments = [... data];
+        experiments.sort( ( a, b ) => {
+          if( a.name > b.name ) return 1;
+          if( a.name < b.name ) return -1;
+          return 0;
+        } );
+
+        load_list( experiments, experimental, true );
+      } );
+
+      function load_list( data, destination, progress = false ) {
+        while( destination.children.length > data.length ) {
+          destination.children[0].children[0].removeEventListener( 'click', load_recipe );
+          destination.children[0].remove();
         }
 
-        while( list.children.length < data.length ) {
+        while( destination.children.length < data.length ) {
           const item = document.createElement( 'li' );
           const button = document.createElement( 'button' );
           const image = document.createElement( 'img' );
@@ -298,19 +343,24 @@
 
           item.appendChild( button );
 
-          list.appendChild( item );          
+          destination.appendChild( item );          
         }
 
-        for( let c = 0; c < list.children.length; c++ ) {
-          list.children[c].children[0].setAttribute( 'data-id', data[c].id );
-          list.children[c].children[0].children[0].src = data[c].image;     
-          list.children[c].children[0].children[1].innerText = data[c].name;               
+        for( let c = 0; c < destination.children.length; c++ ) {
+          destination.children[c].children[0].setAttribute( 'data-id', data[c].id );
+          destination.children[c].children[0].children[0].src = data[c].image;     
+          destination.children[c].children[0].children[1].innerText = data[c].name; 
+          
+          if( progress ) {
+            destination.children[c].children[0].setAttribute( 'data-experimental', true );            
+          }
         }
       }
 
       function load_recipe( evt ) {
         const id = evt.currentTarget.getAttribute( 'data-id' );
-        window.location = `/eats/recipe.html?id=${id}`;
+        const progress = evt.currentTarget.hasAttribute( 'data-experimental' ) ? '&experimental' : '';
+        window.location = `/eats/recipe.html?id=${id}${progress}`;
       }
     </script>
 

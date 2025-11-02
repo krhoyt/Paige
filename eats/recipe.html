@@ -164,7 +164,7 @@
 
       let ingredients = null;      
 
-      fetch( '/eats/catalog.json' )
+      fetch( search.has( 'experimental' ) ? '/eats/experimental.json' : '/eats/catalog.json' )
       .then( ( response ) => response.json() )
       .then( ( data ) => {
         const recipe = data.find( ( value ) => value.id === id );
