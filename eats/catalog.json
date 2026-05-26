@@ -174,5 +174,25 @@
     "name": "Korean Ground Beef",
     "source": "korean-ground-beef.md",
     "image": "korean-ground-beef.jpg"        
+  }, {
+    "id": "129d433c-326e-4748-b4c1-d7e3854f49d9",
+    "name": "Butter Chicken",
+    "source": "butter-chicken.md",
+    "image": "butter-chicken.png"
+  }, {
+    "id": "e4a8b51f-4c2b-47d0-a7f7-8636e7d29ead",
+    "name": "Slow Cooker Chai Tea",
+    "source": "chai-tea.md",
+    "image": "chai-tea.png"
+  }, {
+    "id": "d6f7bd4f-a1ea-4fcf-a3f4-8a5221efaaf9",
+    "name": "Potato Salad",
+    "source": "potato-salad.md",
+    "image": "potato-salad.png"
+  }, {
+    "id": "b4723ce5-a7d0-4648-8ab9-fce50755c8c0",
+    "name": "Breakfast Burritos",
+    "source": "breakfast-burritos.md",
+    "image": "breakfast-burritos.png"
   }
 ]
