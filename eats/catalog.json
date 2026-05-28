@@ -194,5 +194,10 @@
     "name": "Breakfast Burritos",
     "source": "breakfast-burritos.md",
     "image": "breakfast-burritos.png"
+  }, {
+    "id": "808f47d5-6d1f-494e-ba49-0851cdb77b7b",
+    "name": "Jackie's Taco Soup",
+    "source": "taco-soup.md",
+    "image": "taco-soup.png"
   }
 ]
