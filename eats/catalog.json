@@ -199,5 +199,10 @@
     "name": "Jackie's Taco Soup",
     "source": "taco-soup.md",
     "image": "taco-soup.png"
+  }, {
+    "id": "962aba52-c468-4cbd-808f-6cc5944a4edc",
+    "name": "Jackie's Rice Crispy Treats",
+    "source": "rice-crispy-treats.md",
+    "image": "rice-crispy-treats.png"
   }
 ]
